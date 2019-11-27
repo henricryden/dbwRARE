@@ -1,14 +1,14 @@
 # This is the default format.
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:categories/:year/:month/:day/:title
-
+theme: jekyll-theme-leap-day
 exclude: [".rvmrc", ".rbenv-version", "ReadMe.md", "Rakefile", "changelog.md", "License.md"]
 highlighter: rouge
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Dual Bandwidth RARE
+title : Fat/Water Separation with Dual Bandwidths
 author :
   name : Henric Rydén
   email : henric.ryden@ki.se
