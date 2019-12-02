@@ -8,7 +8,7 @@ This page hosts source code and interactive plots used for producing the results
 
 You can access source code to reproduce the plots shown here at the [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE)
 
-### Plots
+### Topics
 - [Optimization of Gradient Waveforms](pages/overview)
 - [Monte Carlo Simulations](pages/montecarlo)
 
