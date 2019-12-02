@@ -144,7 +144,7 @@ At 1.5 / 3 T, $\pi = $ 1.15 / 2.30 ms.
 
 The results shown below is essentially a reproduction of the results by [1] and [2], with the echo weights $w_1 = w_2 = \frac{1}{\sqrt{2}}$:
 
-<iframe src="/assets/plots/unweighted.html"
+<iframe src="../assets/plots/unweighted.html"
     sandbox="allow-same-origin allow-scripts"
     width="120%"
     height="400"
@@ -172,7 +172,7 @@ $$
 
 Below is a plot of $w_1$ and $w_2$ as a function of f:
 
-<iframe src="assets/plots/weights.html"
+<iframe src="../assets/plots/weights.html"
     sandbox="allow-same-origin allow-scripts"
     width="100%"
     height="200"
