@@ -172,7 +172,7 @@ $$
 
 Below is a plot of $w_1$ and $w_2$ as a function of f:
 
-<iframe src="/assets/plots/weights.html"
+<iframe src="assets/plots/weights.html"
     sandbox="allow-same-origin allow-scripts"
     width="100%"
     height="200"
@@ -184,7 +184,7 @@ Below is a plot of $w_1$ and $w_2$ as a function of f:
 Setting $t_1 = 0$, we can investigate the effective NSA of water and fat at a 0% fat fraction with varying $f$ and $t_2$, shown below:
 
 
-<iframe src="/assets/plots/weighted.html"
+<iframe src="../assets/plots/weighted.html"
     sandbox="allow-same-origin allow-scripts"
     width="120%"
     height="400"
