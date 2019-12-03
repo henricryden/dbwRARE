@@ -134,17 +134,17 @@ $$
 $$
 
 Where the + and * superscript denotes the pseudoinverse and conjugate operator, respectively.
-The NSA of the species is calculated from the signal variance divided by the variance of the estimates:
+The NSA of the species is calculated from the signal variance divided by the variance of the estimate $s \in \left\\{ W, F \right\\} $ of interest:
 
 $$
 \begin{align*}
-\textrm{NSA}_{\hat{\mathbf{X}}}
+\textrm{NSA}_{\hat{s}}
 =
 \frac{
   \sigma ^2
 }{
   \textrm{Var}\left(
-    \hat{\mathbf{X}}
+    \hat{s}
     \right)
 }
 
@@ -171,7 +171,7 @@ The results shown below is essentially a reproduction of the results by [1] and 
     frameborder="0">
 </iframe>
 
-The above figure shown the previously established well-conditioned sampling of an in-phase and opposed-phase echo.
+The above figure shows the previously established well-conditioned sampling of where one echo is acquire in-phase while the other is an opposed-phase echo.
 
 -----
 
@@ -199,7 +199,7 @@ Below is a plot of $w_1$ and $w_2$ as a function of f:
     frameborder="0">
 </iframe>
 
-Setting $t_1 = 0$, we can investigate the effective NSA of water and fat at a 0% fat fraction with varying $f$ and $t_2$, shown below:
+Setting $t_1 = 0$, we can investigate the effective NSA of water and fat with varying $f$, $t_2$ and fat fraction, shown below:
 
 
 <iframe src="../assets/plots/weighted.html"
