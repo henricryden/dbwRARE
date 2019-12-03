@@ -11,17 +11,8 @@ You can access source code to reproduce the plots shown here at the [dBWRARE rep
 ### Topics
 - [Optimization of Gradient Waveforms](pages/waveform)
 - [Monte Carlo Simulations](pages/montecarlo)
+- [Cramér-Rao Bounds](pages/crb)
 
-
-
-<iframe src="/assets/plots/dBWRARE.html"
-    sandbox="allow-same-origin allow-scripts"
-    width="120%"
-    height="1000"
-    scrolling="no"
-    seamless="seamless"
-    frameborder="0">
-</iframe>
 > **{{ site.author.name }}**
 >
 {{ site.author.email }}

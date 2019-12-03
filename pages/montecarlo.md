@@ -158,7 +158,7 @@ $$
 ### Equal Weights
 Below is a Monte Carlo simulation of the equally weighted two-point fat water inverse problem, with axes corresponding to dephasing times.
 Instead of showing the nominal times, the dephasing angle is used instead to avoid the field strength dependency.
-At 1.5 / 3 T, $\pi = $ 1.15 / 2.30 ms.
+At 1.5 / 3 T, $\pi$ corresponds to 1.15 / 2.30 ms.
 
 The results shown below is essentially a reproduction of the results by [1] and [2], with the echo weights $w_1 = w_2 = \frac{1}{\sqrt{2}}$:
 
@@ -177,7 +177,7 @@ The above figure shown the previously established well-conditioned sampling of a
 
 ### Weighted Case
 Since the variance increases quadratically with a linear scaling factor, i.e. $\textrm{Var}(aX) = a^2 \textrm{Var(X)}$, weights must be chosen to achieve unit variance in its combined case:
-$w_1^2 + w^2 = 1$.
+$w_1^2 + w_2^2 = 1$.
 We can express the weights using the in-phase fraction $f = \frac{w_1}{w_1 + w_2} \in [0,1]$:
 
 $$
