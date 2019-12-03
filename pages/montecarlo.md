@@ -165,7 +165,7 @@ The results shown below is essentially a reproduction of the results by [1] and 
 <iframe src="../assets/plots/unweighted.html"
     sandbox="allow-same-origin allow-scripts"
     width="120%"
-    height="400"
+    height="410"
     scrolling="no"
     seamless="seamless"
     frameborder="0">
@@ -205,7 +205,7 @@ Setting $t_1 = 0$, we can investigate the effective NSA of water and fat with va
 <iframe src="../assets/plots/weighted.html"
     sandbox="allow-same-origin allow-scripts"
     width="120%"
-    height="400"
+    height="410"
     scrolling="no"
     seamless="seamless"
     frameborder="0">
