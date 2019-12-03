@@ -134,8 +134,26 @@ $$
 $$
 
 Where the + and * superscript denotes the pseudoinverse and conjugate operator, respectively.
-Once $\hat{\mathbf{X}}$
------
+The NSA of the species is calculated from the signal variance divided by the variance of the estimates:
+
+$$
+\begin{align*}
+\textrm{NSA}_{\hat{\mathbf{X}}}
+=
+\frac{
+  \sigma ^2
+}{
+  \textrm{Var}\left(
+    \hat{\mathbf{X}}
+    \right)
+}
+
+\end{align*}
+$$
+
+
+
+---
 
 ### Equal Weights
 Below is a Monte Carlo simulation of the equally weighted two-point fat water inverse problem, with axes corresponding to dephasing times.
