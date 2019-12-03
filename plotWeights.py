@@ -1,8 +1,6 @@
 import numpy as np
-from supportFunctions import fwModelMatrix, weightsFromFraction
-from bokeh.layouts import column, row
-from bokeh.plotting import figure, output_file, save, show
-from bokeh.models import LinearColorMapper
+from supportFunctions import weightsFromFraction
+from bokeh.plotting import figure, output_file, save
 
 fs = np.linspace(0,1,100)
 weights = np.zeros((100,2))
