@@ -171,7 +171,7 @@ The results shown below is essentially a reproduction of the results by [1] and 
     frameborder="0">
 </iframe>
 
-The above figure shows the previously established well-conditioned sampling of where one echo is acquire in-phase while the other is an opposed-phase echo.
+The above figure shows the previously established well-conditioned sampling of where one echo is acquired in-phase while the other is an opposed-phase echo.
 
 -----
 
