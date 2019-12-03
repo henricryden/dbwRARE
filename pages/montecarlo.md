@@ -171,14 +171,14 @@ The results shown below is essentially a reproduction of the results by [1] and 
     frameborder="0">
 </iframe>
 
-The above figure shows the previously established well-conditioned sampling of where one echo is acquire in-phase while the other is an opposed-phase echo.
+The above figure shows the previously established well-conditioned sampling of where one echo is acquired in-phase while the other is an opposed-phase echo.
 
 -----
 
 ### Weighted Case
 Since the variance increases quadratically with a linear scaling factor, i.e. $\textrm{Var}(aX) = a^2 \textrm{Var(X)}$, weights must be chosen to achieve unit variance in its combined case:
 $w_1^2 + w_2^2 = 1$.
-We can express the weights using the in-phase fraction $f = \frac{w_1}{w_1 + w_2} \in [0,1]$:
+We can express the weights from the first-echo fraction $f = \frac{w_1}{w_1 + w_2} \in [0,1]$:
 
 $$
 \begin{align*}
