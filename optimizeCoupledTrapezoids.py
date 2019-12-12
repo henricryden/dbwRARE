@@ -9,12 +9,6 @@ from bokeh.layouts import column, row
 from bokeh.models.widgets import Slider
 
 def plot(numFrac, numPF, args):
-    W = weightsFromFraction(np.linspace(0,1,numFrac))
-    p1 = figure(height=200, width=200, toolbar_location=None, title='Weights')
-
-    l = p1.line(np.linspace(0,1,numFrac), W[1], legend_label="w1", color='navy')
-    l = p1.line(np.linspace(0,1,numFrac), W[1], legend_label="w2", color='chocolate')
-
     B0 = 3 # Tesla
     mapper = LinearColorMapper(palette='Spectral10', low=0, high=1)
     colorBar = ColorBar(color_mapper=mapper, location=(0,0))
@@ -89,7 +83,7 @@ def plot(numFrac, numPF, args):
                             'arrows': CDSArrow,
                             'first': CDSFirst,
                             'slider': slider,
-                            'second': CDSSecond,},
+                            'second': CDSSecond},
                             code="""
                             if ( isFinite(cb_data['geometry']['x']) && isFinite(cb_data['geometry']['y']) ) {
                                 let ta = slider.value / 1000.0
@@ -122,8 +116,8 @@ def plot(numFrac, numPF, args):
                                 window.pfIdx = pfIdx;
                             }
                             """)
-    pWeighted.add_tools(HoverTool(tooltips=None, callback=hoverCallback, mode='mouse'))
-    pUnWeighted.add_tools(HoverTool(tooltips=None, callback=hoverCallback, mode='mouse'))
+    pWeighted.add_tools(HoverTool(tooltips=[('index', '$index'), ('x', '$x'), ('y', '$y')], callback=hoverCallback, mode='mouse'))
+    pUnWeighted.add_tools(HoverTool(tooltips=[('index', '$index'), ('x', '$x'), ('y', '$y')], callback=hoverCallback, mode='mouse'))
     sliderCallback = CustomJS(
         args={
             'acquistionTimes': acquistionTimes,
@@ -139,14 +133,12 @@ def plot(numFrac, numPF, args):
         """
         )
     slider.js_on_change('value', sliderCallback)
-    if args.embed:
-        from bokeh.embed import components
-        script, div = components([pWeighted, pUnWeighted, pGrad, pCompass, slider])
-        for i, cDiv in enumerate(div):
-            with open("div{}.txt".format(i), "w") as text_file:
-                print(cDiv, file=text_file)
-        with open("script.txt".format(i), "w") as text_file:
-            print(script, file=text_file)
+    if args.svg:
+        from bokeh.io import export_svgs
+        pWeighted.output_backend = "svg"
+        fname = 'pweighted.svg'
+        export_svgs(pWeighted, filename=fname)
+        print('Saved ' + fname)
     else:
         output_file(args.filename)
         combinedPlot = column(row(pWeighted, pUnWeighted), row(pGrad, pCompass), slider)
@@ -170,15 +162,15 @@ if __name__ == "__main__":
                         default=192)
     parser.add_argument('--tmin',
                         help="Minimum t_a [ms]",
-                        default=2.3)
+                        default=3.45)
     parser.add_argument('--tmax',
                         help="Maximum t_a [ms]",
-                        default=4.6)
+                        default=4)
     parser.add_argument('--dt',
                         help='Step size t_a [ms]',
                         default=.5)
-    parser.add_argument('--embed',
-                        help='Output for embedding plot',
+    parser.add_argument('--svg',
+                        help='Output for svg plot',
                         default=False)
     args = parser.parse_args()
     plot(int(args.fres), int(args.pfres), args)
