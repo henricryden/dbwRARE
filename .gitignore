@@ -1,3 +1,5 @@
 *.html
 *.pyc
 .vscode/
+*.json
+*.svg

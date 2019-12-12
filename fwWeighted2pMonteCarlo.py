@@ -1,8 +1,9 @@
 import numpy as np
+from tqdm import tqdm
 from supportFunctions import fwModelMatrix, weightsFromFraction
 from bokeh.layouts import column, row
 from bokeh.plotting import figure, output_file, save, show
-from bokeh.models import ColumnDataSource, LinearColorMapper, CustomJS
+from bokeh.models import ColumnDataSource, LinearColorMapper, CustomJS, HoverTool, ColorBar
 from bokeh.models.widgets import Slider
 # n - Number of samples
 # t - Dephasing times [2,1]
@@ -67,22 +68,25 @@ nt = 192
 nFrac = 192
 nSamples = 1000
 B0 = 3
-FFs = np.linspace(start=0,stop=1, num=6, endpoint=True)
+nFFs=6
+FFs = np.linspace(start=0,stop=1, num=nFFs, endpoint=True)
 
 NSA_equalWeights = np.zeros((nt, nt, len(FFs), 2), dtype=np.float32)
 NSA_weighted = np.zeros((nt, nFrac, len(FFs), 2), dtype=np.float32)
-W = 1
-F = 0
 
 
+pbar1 = tqdm(total=nt, position=0, desc='Current fat fraction')
+pbar2 = tqdm(total=nFFs, position=1, desc='Overall progress')
 for FFidx, fatFraction in enumerate(FFs):
+    pbar1.reset()
     for tIdx, t1 in enumerate(np.linspace(0, 2.3e-3, nt)):
         for t2Idx, t2 in enumerate(np.linspace(0, 2.3e-3, nt)):
             NSA_equalWeights[tIdx, t2Idx, FFidx, :] = fwNoiseSim(nSamples, [t1, t2], [1-fatFraction, fatFraction], weightsFromFraction(.5), B0)
         for fIdx, f in enumerate(np.linspace(0, 1, nFrac)):
-            NSA_weighted[tIdx, fIdx, FFidx, :] = fwNoiseSim(nSamples, [0., t1], [1-fatFraction, fatFraction], weightsFromFraction(f), B0)
-        print(tIdx)
-    print(FFidx)
+            pass #NSA_weighted[tIdx, fIdx, FFidx, :] = fwNoiseSim(nSamples, [0., t1], [1-fatFraction, fatFraction], weightsFromFraction(f), B0)
+        pbar1.update(1)
+    pbar2.update(1)
+    
 CDSimages = {'weighted': [ColumnDataSource({'imageData': [NSA_weighted[:,:,0,0]]}),
                           ColumnDataSource({'imageData': [NSA_weighted[:,:,0,1]]})],
              'unweighted': [ColumnDataSource({'imageData': [NSA_equalWeights[:,:,0,0]]}),
@@ -99,7 +103,7 @@ sliderCallbackW = CustomJS(
         CDS[1].change.emit();
         """
         )
-sliderW = Slider(start=0, end=1, value=0, step=.2, title="Fat fraction")
+sliderW = Slider(start=0, end=1, value=0, step=1.0/(nFFs-1), title="Fat fraction")
 sliderW.js_on_change('value', sliderCallbackW)
 
 sliderCallbackUW = CustomJS(
@@ -114,22 +118,27 @@ sliderCallbackUW = CustomJS(
         CDS[1].change.emit();
         """
         )
-sliderUW = Slider(start=0, end=1, value=0, step=.2, title="Fat fraction")
+sliderUW = Slider(start=0, end=1, value=0, step=1.0/(nFFs-1), title="Fat fraction")
 sliderUW.js_on_change('value', sliderCallbackUW)
 
 mapper1 = LinearColorMapper(palette='Spectral10', low=0, high=1)
 mapper2 = LinearColorMapper(palette='Spectral10', low=0, high=1)
-p1 = figure(width=350, height=350, tools='hover',toolbar_location=None, title='NSA Water, unweighted')
+colorBar1 = ColorBar(color_mapper=mapper1, location=(0,0))
+colorBar2 = ColorBar(color_mapper=mapper1, location=(0,0))
+p1 = figure(width=350, height=350, toolbar_location=None, title='NSA Water, unweighted')
 p1.image(image='imageData', x=0, y=0, dw=nt, dh=nt, color_mapper=mapper1, source= CDSimages['unweighted'][0])
-p2 = figure(width=350, height=350, tools='hover',toolbar_location=None, title='NSA Fat, unweighted')
+p2 = figure(width=350, height=350, toolbar_location=None, title='NSA Fat, unweighted')
+p2.add_layout(colorBar1, 'right')
 p2.image(image='imageData', x=0, y=0, dw=nt, dh=nt, color_mapper=mapper1, source= CDSimages['unweighted'][1])
-p3 = figure(width=350, height=350, tools='hover',toolbar_location=None, title='NSA Water, unweighted')
+p3 = figure(width=350, height=350, toolbar_location=None, title='NSA Water, unweighted')
 p3.image(image='imageData', x=0, y=0, dw=nFrac, dh=nt, color_mapper=mapper2, source= CDSimages['weighted'][0])
-p4 = figure(width=350, height=350, tools='hover',toolbar_location=None, title='NSA Fat, weighted')
+p4 = figure(width=350, height=350, toolbar_location=None, title='NSA Fat, weighted')
 p4.image(image='imageData', x=0, y=0, dw=nFrac, dh=nt, color_mapper=mapper2, source= CDSimages['weighted'][1])
+p4.add_layout(colorBar2, 'right')
 
 for p in [p1, p2, p3, p4]:
     p.x_range.range_padding = p.y_range.range_padding = 0
+    p.add_tools(HoverTool(tooltips=[('NSA', '@imageData')], mode='mouse'))
 for p in [p3, p4]:
     p.xaxis.ticker = [0, (nFrac-1)/4, (nFrac-1)/2, 3*(nFrac-1)/4, nFrac-1]
     p.xaxis.major_label_overrides = {0:'0',
@@ -151,6 +160,6 @@ p3.yaxis.axis_label = p4.yaxis.axis_label = 't2'
 unw = column(row(p1, p2), sliderUW)
 save(unw, filename='unweighted.html', title='')
 output_file('unweighted.html')
-weighted = column(row(p3, p4), sliderW)
-output_file('weighted.html')
-save(weighted, filename='weighted.html', title='')
+#weighted = column(row(p3, p4), sliderW)
+#output_file('weighted.html')
+#save(weighted, filename='weighted.html', title='')
