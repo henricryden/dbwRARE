@@ -33,9 +33,10 @@ def weightedCrbTwoEchoes(B0, t, w):
 
     # Denominator (common)
     D = (w[0]*w[1]*(c1 - c2)) ** 2
-    # CRB [Water, Fat]
+    # CRB [Water, Fat, SS]
     CRB = [((w[0]*c1)**2 + (w[1]*c2)**2) / D,
                      (w[0]**2 + w[1]**2) / D]
+    CRB.append(2/(1/CRB[0] + 1/CRB[1]))
     return CRB
 
 def fwModelMatrix(t, B0, npeaks=1):
