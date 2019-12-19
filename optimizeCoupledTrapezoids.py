@@ -9,7 +9,7 @@ from bokeh.layouts import column, row
 from bokeh.models.widgets import Slider
 
 def plot(numFrac, numPF, args):
-    B0 = 3 # Tesla
+    B0 = 1.5 # Tesla
     mapper = LinearColorMapper(palette='Spectral10', low=0, high=1)
     colorBar = ColorBar(color_mapper=mapper, location=(0,0))
     acquistionTimes = np.arange(start=float(args.tmin), stop=float(args.tmax), step=float(args.dt))
@@ -24,8 +24,8 @@ def plot(numFrac, numPF, args):
             for nf, f in enumerate(firstEchoFractions):
                 dephasingTimes[nPF, nf, nt, :] = getDephasingTimes(ta/1.0e3, PF, f)
                 weights = weightsFromFraction(f)
-                NSA[nPF, nf, nt, 0] = np.mean( np.reciprocal( weightedCrbTwoEchoes(B0, dephasingTimes[nPF, nf, nt, :], weights) ) ) # Weighted NSA_ss
-                NSA[nPF, nf, nt, 1] = np.mean( np.reciprocal( weightedCrbTwoEchoes(B0, dephasingTimes[nPF, nf, nt, :], weightsFromFraction(.5)) ) ) # Unweighted NSA_ss
+                NSA[nPF, nf, nt, 0] = np.reciprocal( weightedCrbTwoEchoes(B0, dephasingTimes[nPF, nf, nt, :], weights)[2] )  # Weighted NSA_ss
+                NSA[nPF, nf, nt, 1] = np.reciprocal( weightedCrbTwoEchoes(B0, dephasingTimes[nPF, nf, nt, :], weightsFromFraction(.5))[2] )  # Unweighted NSA_ss
         print(100.*(nt+1)/numTa)
 
     pWeighted = figure(height=350, width=350, toolbar_location=None, title='Weighted NSA_ss (3T)')
@@ -35,7 +35,7 @@ def plot(numFrac, numPF, args):
                 ColumnDataSource({'imageData': [NSA[:,:,-1,1]]})]
     pWeighted.image(image='imageData', x=0, y=0, dw=numFrac, dh=numPF, color_mapper=mapper, source=CDSimages[0])
     pUnWeighted.image(image='imageData', x=0, y=0, dw=numFrac, dh=numPF, color_mapper=mapper, source=CDSimages[1])
-
+    
     for p in [pWeighted, pUnWeighted]:
         p.xaxis.ticker = [0, (numFrac-1)/4, (numFrac-1)/2, 3*(numFrac-1)/4, numFrac-1]
         p.xaxis.major_label_overrides = {0:'0',
@@ -133,12 +133,13 @@ def plot(numFrac, numPF, args):
         """
         )
     slider.js_on_change('value', sliderCallback)
-    if args.svg:
+    if args.svg is True:
         from bokeh.io import export_svgs
-        pWeighted.output_backend = "svg"
         fname = 'pweighted.svg'
+        print('Saving ' + fname)
+        pWeighted.output_backend = "svg"
         export_svgs(pWeighted, filename=fname)
-        print('Saved ' + fname)
+        print('Done')
     else:
         output_file(args.filename)
         combinedPlot = column(row(pWeighted, pUnWeighted), row(pGrad, pCompass), slider)
