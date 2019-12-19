@@ -6,7 +6,7 @@ description: The official site for all things related to the dual bandwidth RARE
 
 This page hosts source code and interactive plots used for producing the results as described in the paper "RARE Two-point Dixon with Dual Bandwidths".
 
-You can access source code to reproduce the plots shown here at the [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE)
+You can access source code to reproduce the plots shown here at the [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE).
 
 ### Topics
 - [Cramér-Rao Bounds](pages/crb)
@@ -15,6 +15,9 @@ You can access source code to reproduce the plots shown here at the [dBWRARE rep
 - [Optimization of Gradient Waveforms](pages/waveform)
 
 
-> **{{ site.author.name }}**
+<br />
+
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> Karolinska Institutet
 >
 {{ site.author.email }}
