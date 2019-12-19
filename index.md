@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome
+title: Supplementary Materials for dBW-RARE
 description: The official site for all things related to the dual bandwidth RARE sequence
 ---
 
