@@ -9,7 +9,7 @@ from bokeh.layouts import column, row
 from bokeh.models.widgets import Slider
 
 def plot(numFrac, numPF, args):
-    B0 = 1.5 # Tesla
+    B0 = 3 # Tesla
     mapper = LinearColorMapper(palette='Spectral10', low=0, high=1)
     colorBar = ColorBar(color_mapper=mapper, location=(0,0))
     acquistionTimes = np.arange(start=float(args.tmin), stop=float(args.tmax), step=float(args.dt))
