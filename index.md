@@ -12,6 +12,7 @@ You can access source code to reproduce the plots shown here at the [dBWRARE rep
 - [Optimization of Gradient Waveforms](pages/waveform)
 - [Monte Carlo Simulations](pages/montecarlo)
 - [Cramér-Rao Bounds](pages/crb)
+- [SNR Comparison with Single Bandwidth](pages/snr)
 
 > **{{ site.author.name }}**
 >
