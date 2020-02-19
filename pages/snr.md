@@ -32,7 +32,7 @@ The same ROIs were used for both acquisitions.
 A comparison between the time spent sampling can give an approximation of how much SNR improvement can be expected.
 The dephasing times for sBW and dBW are shown below:
 
-![SNR](/assets/png/dephasingTimes.png)
+![SNR](../assets/png/dephasingTimes.png)
 
 The theoretical maximum SNR improvement is the square root of the ratio between sampling durations.
 
@@ -40,7 +40,7 @@ The theoretical maximum SNR improvement is the square root of the ratio between 
 The measured SNR gain was **1.515** and **1.513** from the water and fat image, respectively.
 The theoretical gain was **1.544**
 
-![SNR](/assets/png/snr_roi.png)
+![SNR](../assets/png/snr_roi.png)
 
 -----
 [1] *Wang, X. et al.* **MR Neurography of Brachial Plexus at 3.0 T with Robust Fat and Blood Suppression.** Radiology 283, 538–546 (2017)
