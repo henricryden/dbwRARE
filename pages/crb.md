@@ -13,8 +13,8 @@ $$
 \underbrace{
     \left[
     \begin{matrix}
-    S(t_1) \\
-    S(t_2) \\
+    S_1 \\
+    S_2 \\
     \end{matrix}
     \right]
     }_{\mathbf{S}}
@@ -59,16 +59,39 @@ The signal from echo $n$ can be derived with respect to the real-valued model pa
 
 $$
 \begin{align*}
-\frac{\partial y_n(\boldsymbol{\theta})}{\partial\boldsymbol{\theta}}
+\frac{\partial S_n(\boldsymbol{\theta})}{\partial\boldsymbol{\theta}}
  = w_n e^{i(\psi t_n + \phi)}
 \left[\begin{array}{c}
         1\\
-        a(t_n)\\
-        i\left(W + a(t_n) F \right)  \\
-        it_n\left(W + a(t_n) F \right)  \\
+        \omega\\
+        i\left(W + \omega F \right)  \\
+        it_n\left(W + \omega F \right)  \\
 \end{array}\right]
 \end{align*}
 $$
+
+The Slepian-Bangs formula provides an analytical expression for the Fisher information matrix, $\mathbf{\mathcal{F}}$, assuming a complex Gaussian noise distribution [1, 2]:
+
+$$
+\begin{align*}
+    \mathbf{\mathcal{F}} 
+    =
+    \frac{2}{\sigma^{2}}
+    \sum_{n=1}^{2} 
+        \left( w_n^2 \textrm{Re}
+            \left\{
+                \left(\frac{\partial S_n(\boldsymbol{\theta})}{\partial\boldsymbol{\theta}}\right)
+                \left(\frac{\partial S_n(\boldsymbol{\theta})}{\partial\boldsymbol{\theta}}\right)^{H}
+            \right\}
+        \right) 
+    \label{eq:FIM}
+\end{align*}
+$$
+
+-----
+[1] *Slepian, D.* **Estimation of signal parameters in the presence of noise.** Transactions of the IRE Professional Group on Information Theory 3, 68–89 (1954)
+
+[2] *Besson, O. & Abramovich, Y. I.* **On the Fisher Information Matrix for Multivariate Elliptically Contoured Distributions.** IEEE Signal Process. Lett. 20, 1130–1133 (2013)
 
 -----
 > **{{ site.author.name }}**

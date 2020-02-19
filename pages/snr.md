@@ -46,6 +46,7 @@ The theoretical gain was **1.544**
 [1] *Wang, X. et al.* **MR Neurography of Brachial Plexus at 3.0 T with Robust Fat and Blood Suppression.** Radiology 283, 538–546 (2017)
 
 
-> **{{ site.author.name }}**
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> Karolinska Institutet
 >
 {{ site.author.email }}

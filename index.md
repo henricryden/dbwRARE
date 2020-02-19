@@ -1,19 +1,23 @@
 ---
 layout: page
-title: Welcome
+title: Supplementary Materials for dBW-RARE
 description: The official site for all things related to the dual bandwidth RARE sequence
 ---
 
-This page hosts source code and interactive plots used for producing the results as described in the paper "A Dual Bandwidth Fat/Water Separated RARE Sequence".
+This page hosts source code and interactive plots used for producing the results as described in the paper "RARE Two-point Dixon with Dual Bandwidths".
 
-You can access source code to reproduce the plots shown here at the [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE)
+You can access source code to reproduce the plots shown here at the [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE).
 
 ### Topics
-- [Optimization of Gradient Waveforms](pages/waveform)
-- [Monte Carlo Simulations](pages/montecarlo)
 - [Cramér-Rao Bounds](pages/crb)
+- [Monte Carlo Simulations](pages/montecarlo)
+- [dBW-RARE Sequence Plot](assets/plots/sequence.html)
+- [Optimization of Gradient Waveforms](pages/waveform)
 - [SNR Comparison with Single Bandwidth](pages/snr)
 
-> **{{ site.author.name }}**
+<br />
+
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> Karolinska Institutet
 >
 {{ site.author.email }}
