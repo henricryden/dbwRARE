@@ -7,6 +7,10 @@ description: Henric Rydén
 
 The [dBWRARE repository on GitHub](https://github.com/henricryden/dbwRARE) hosts data and scripts to reproduce the SNR measurements described here.
 
+Sequence plot for the measurements are available here:
+- [sBW-RARE [1]](../assets/plots/sbwrare.html)
+- [dBW-RARE](../assets/plots/dbwrare.html)
+
 ### Data acquisition
 The single bandwidth pulse sequence was implemented according to [1].
 The number of shots was doubled and each phase encoding line was acquired twice in a TR interleaved manner.
