@@ -21,6 +21,6 @@ You can access source code to reproduce the plots shown here at the [dBWRARE rep
 <br />
 
 > **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
-> Karolinska Institutet
+> {{ site.author.institute }}
 >
 {{ site.author.email }}

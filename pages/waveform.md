@@ -24,6 +24,8 @@ The figure might take some time to load.
     frameborder="0">
 </iframe>
 
-> **{{ site.author.name }}**
+-----
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> {{ site.author.institute }}
 >
 {{ site.author.email }}

@@ -227,3 +227,9 @@ Magn. Reson. Med. 80, 2501–2513 (2018).
 
 [4] *Berglund, J. et al.* **Fat/water separation in k-space with real-valued estimates and its combination with POCS.**
 Magn. Reson. Med. (2019). doi:10.1002/mrm.27949
+
+-----
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> {{ site.author.institute }}
+>
+{{ site.author.email }}

@@ -94,6 +94,7 @@ $$
 [2] *Besson, O. & Abramovich, Y. I.* **On the Fisher Information Matrix for Multivariate Elliptically Contoured Distributions.** IEEE Signal Process. Lett. 20, 1130–1133 (2013)
 
 -----
-> **{{ site.author.name }}**
+> **[{{ site.author.name }}](https://staff.ki.se/people/henrry)**  
+> {{ site.author.institute }}
 >
 {{ site.author.email }}
