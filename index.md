@@ -15,6 +15,7 @@ You can access source code to reproduce the plots shown here at the [dBWRARE rep
 - [Monte Carlo Simulations](pages/montecarlo)
 - [dBW-RARE Sequence Plot](assets/plots/sequence.html)
 - [Optimization of Gradient Waveforms](pages/waveform)
+- [Single vs multi peak](pages/mpvssp)
 - [SNR Comparison](pages/snr) ([sBW](assets/plots/sbwrare.html) vs [dBW](assets/plots/dbwrare.html) )
 
 <br />
